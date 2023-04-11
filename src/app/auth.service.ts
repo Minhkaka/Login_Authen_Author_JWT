@@ -48,8 +48,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (!token) {
       this.removeToken();
-      return;
+      return null;
     }
+
     if (this.roles.length === 0) {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
@@ -92,21 +93,12 @@ export class AuthService {
   private openDialog(backUrl): void {
     const dialogRef = this.dialog.open(DialogLoginComponent, {
       width: '250px',
-      data: { username: '', password: '', token: '' },
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // console.log('AuthService: afterClosed', result);
-      const username = result?.data?.username;
-      const password = result?.data?.password;
-      const token = result?.data?.token;
-      // console.log(
-      //   'AuthService: afterClosed',
-      //   result,
-      //   username,
-      //   password,
-      //   token
-      // );
+      const { username, password, token } = result?.data;
+
       if (!!username && !!password && !!token) {
         this.setToken(token);
         this.router.navigate([backUrl]);

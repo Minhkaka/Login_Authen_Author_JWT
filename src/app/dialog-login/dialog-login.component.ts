@@ -15,7 +15,6 @@ export interface DialogData {
 @Component({
   selector: 'app-dialog-login',
   templateUrl: './dialog-login.component.html',
-  styleUrls: ['./dialog-login.component.scss'],
 })
 export class DialogLoginComponent implements OnInit {
   constructor(
@@ -27,24 +26,18 @@ export class DialogLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   submitLogin(): void {
-    // console.log('DialogLoginComponent', this.data);
-    // this.dialogRef.close({ data: this.data });
     this.authdataService
       .authLogin(this.data.username, this.data.password)
       .subscribe(
-        (data) => {
-          // console.log('DialogLoginComponent: login, data = ', data);
-          if (Object.prototype.hasOwnProperty.call(data, 'error')) {
+        (token) => {
+          if (Object.prototype.hasOwnProperty.call(token, 'error')) {
             // console.log('DialogLoginComponent: login: error', data);
           } else {
-            this.data.token = data;
-            // console.log('DialogLoginComponent: this.data', this.data);
+            this.data.token = token;
             this.dialogRef.close({ data: this.data });
           }
-        },
-        (error) => {
+        }, (error) => {
           console.log('AuthService: failed', error);
-        }
-      );
+        });
   }
 }
