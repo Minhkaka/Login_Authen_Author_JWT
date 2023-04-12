@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogLoginComponent } from './dialog-login/dialog-login.component';
+import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
