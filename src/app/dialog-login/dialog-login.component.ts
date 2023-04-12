@@ -1,10 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { AuthdataService } from '../authdata.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthdataService } from '../_services/authdata.service';
 
 export interface DialogData {
   username: string;
@@ -36,8 +32,10 @@ export class DialogLoginComponent implements OnInit {
             this.data.token = token;
             this.dialogRef.close({ data: this.data });
           }
-        }, (error) => {
+        },
+        (error) => {
           console.log('AuthService: failed', error);
-        });
+        }
+      );
   }
 }

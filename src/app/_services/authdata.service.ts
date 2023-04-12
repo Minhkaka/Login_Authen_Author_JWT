@@ -1,23 +1,16 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthdataService {
-  private REST_API_SERVER = 'http://localhost:5000/api/users/login';
-
   constructor(private httpClient: HttpClient) {}
 
   public authLogin(username, password): Observable<any> {
-    const httpParams = new HttpParams();
-    const payload = { username, password };
+    // const httpParams = new HttpParams();
+    // const payload = { username, password };
     // return this.httpClient.post(this.REST_API_SERVER, payload, {
     //   params: httpParams,
     // })
