@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { DataService } from '../data.service';
+import { DataService } from '../_services/data.service';
 import { FileUploader, FileItem } from 'ng2-file-upload';
 
 @Component({
