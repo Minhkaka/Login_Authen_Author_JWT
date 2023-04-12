@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { AuthGuard } from 'src/_helpers/auth.guard';
+import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

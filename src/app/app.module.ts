@@ -60,7 +60,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { AuthInterceptor } from 'src/_helpers/interceptor';
+import { AuthInterceptor } from './_helpers/interceptor';
 
 @NgModule({
   declarations: [
