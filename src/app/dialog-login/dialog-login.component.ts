@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AuthdataService } from '../_services/authdata.service';
+import { LoginAuthService } from '../_services/login-auth.service';
 
 export interface DialogData {
   username: string;
@@ -14,7 +14,7 @@ export interface DialogData {
 })
 export class DialogLoginComponent implements OnInit {
   constructor(
-    private authdataService: AuthdataService,
+    private authdataService: LoginAuthService,
     public dialogRef: MatDialogRef<DialogLoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
@@ -25,11 +25,11 @@ export class DialogLoginComponent implements OnInit {
     this.authdataService
       .authLogin(this.data.username, this.data.password)
       .subscribe(
-        (token) => {
-          if (Object.prototype.hasOwnProperty.call(token, 'error')) {
+        (data) => {
+          if (Object.prototype.hasOwnProperty.call(data['token'], 'error')) {
             // console.log('DialogLoginComponent: login: error', data);
           } else {
-            this.data.token = token;
+            this.data['token'] = data['token'];
             this.dialogRef.close({ data: this.data });
           }
         },
