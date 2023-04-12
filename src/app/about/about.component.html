@@ -1,6 +1,22 @@
 <div>
   <b>about works!</b>
   <ul>
-    <li *ngFor="let user of users">{{ user?.name }} - {{ user?.phone }}</li>
+    <li *ngFor="let user of users">
+      {{ user?.name }} - {{ user?.phone }}
+      <div class="example-button-row">
+        <button mat-stroked-button [routerLink]="['/about/view', user.id]">
+          View
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          [routerLink]="['/about/edit', user.id]"
+        >
+          Edit
+        </button>
+      </div>
+    </li>
   </ul>
 </div>
+
+<router-outlet></router-outlet>

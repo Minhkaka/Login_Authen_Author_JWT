@@ -1,3 +1,14 @@
-<div *ngIf="this.loader.getLoading()" class="custom-spinner">
-  <mat-spinner diameter="50" strokeWidth="2"></mat-spinner>
-</div>
+<ng-template [ngIf]="this.loader.getLoading()">
+  <div class="overlay">
+    <div class="custom-spinner">
+      <mat-progress-spinner
+        [diameter]="diameter"
+        [mode]="mode"
+        [color]="color"
+        [strokeWidth]="strokeWidth"
+        [value]="value"
+      >
+      </mat-progress-spinner>
+    </div>
+  </div>
+</ng-template>

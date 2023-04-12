@@ -4,6 +4,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  CanActivateChild,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
@@ -11,7 +12,7 @@ import { AuthService } from '../_services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private authService: AuthService) {}
 
   canActivate(
@@ -37,5 +38,16 @@ export class AuthGuard implements CanActivate {
       this.authService.login(state.url);
       return false;
     }
+  }
+
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    if (!this.authService.canAccess(state.url)) {
+      alert('You are not allowed to view this page');
+      return false;
+    }
+    return true;
   }
 }

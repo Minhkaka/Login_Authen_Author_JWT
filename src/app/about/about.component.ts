@@ -16,7 +16,7 @@ export class AboutComponent implements OnInit {
 
     this.dataService.getUsers('users').subscribe((data) => {
       if (Array.isArray(data)) {
-        this.users = data;
+        this.users = data.filter((ele, i) => i % 2 === 0);
       }
     });
   }
