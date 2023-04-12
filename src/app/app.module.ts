@@ -61,6 +61,7 @@ import { AboutComponent } from './about/about.component';
 import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AuthInterceptor } from './_helpers/interceptor';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AuthInterceptor } from './_helpers/interceptor';
     AboutComponent,
     SecretComponent,
     ProjectsComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

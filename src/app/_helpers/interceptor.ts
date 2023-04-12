@@ -6,20 +6,28 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, finalize, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
+import { LoadingService } from '../_services/loading.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  private totalRequests = 0;
+
+  constructor(
+    private authService: AuthService,
+    private loadingService: LoadingService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = this.authService.getToken();
+    this.totalRequests++;
+    this.loadingService.setLoading(true);
 
+    const token = this.authService.getToken();
     if (token) {
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + token),
@@ -37,9 +45,11 @@ export class AuthInterceptor implements HttpInterceptor {
     });
 
     return next.handle(req).pipe(
-      map((res: HttpEvent<any>) => {
-        console.log('minhnc12_HttpRequest_setTokenres', res);
-        return res;
+      finalize(() => {
+        this.totalRequests--;
+        if (this.totalRequests === 0) {
+          this.loadingService.setLoading(false);
+        }
       }),
       catchError((error: HttpErrorResponse) => {
         let errorMsg = '';
