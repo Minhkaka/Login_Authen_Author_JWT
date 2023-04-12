@@ -54,7 +54,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
-import { Interceptor } from './interceptor';
+import { AuthInterceptor } from './interceptor';
 import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -126,7 +126,7 @@ import { ProjectsComponent } from './projects/projects.component';
     FileUploadModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' },

@@ -4,37 +4,58 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  HttpHeaders,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-
-const headers = new HttpHeaders({
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
-});
+import { catchError, map } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
-export class Interceptor implements HttpInterceptor {
+export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(
-    request: HttpRequest<any>,
+    req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // console.log('Interceptor request', request);
-
-    if (request.url.includes('/login')) {
-      return next.handle(request);
-    }
     const token = this.authService.getToken();
+
     if (token) {
-      let myHeaders = headers.set('Authorization', 'Bearer ' + token);
-      const AuthRequest = request.clone({ headers: myHeaders });
-      // console.log('Interceptor headers', myHeaders);
-      return next.handle(AuthRequest);
-    } else {
-      this.authService.login('/');
+      req = req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + token),
+      });
     }
+
+    if (!req.headers.has('Content-Type')) {
+      req = req.clone({
+        headers: req.headers.set('Content-Type', 'application/json'),
+      });
+    }
+
+    req = req.clone({
+      headers: req.headers.set('Accept', 'application/json'),
+    });
+
+    return next.handle(req).pipe(
+      map((res: HttpEvent<any>) => {
+        console.log('minhnc12_HttpRequest_setTokenres', res);
+        return res;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        let errorMsg = '';
+        if (error.error instanceof ErrorEvent) {
+          console.log('This is client side error');
+          errorMsg = `Error: ${error.error.message}`;
+        } else {
+          console.log('This is server side error');
+          errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+        }
+        // show popup error message
+        // this.errorDialogService.openDialog({
+        //   reason: error.message,
+        //   status: error.status,
+        // });
+      })
+    );
   }
 }

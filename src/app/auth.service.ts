@@ -1,13 +1,6 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -67,13 +60,12 @@ export class AuthService {
   }
 
   public canAccess(url) {
-    console.log('canAccess', this.roles, url);
     if (this.roles.includes('admin')) {
-      // console.log('admin OK');
       return true;
     }
+
     const page = url.toString().substr(1);
-    // console.log('canAccess', page);
+
     if (this.roles.includes(page)) {
       return true;
     }

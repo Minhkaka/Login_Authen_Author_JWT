@@ -1,8 +1,6 @@
 <div>
-  <p>about works!</p>
+  <b>about works!</b>
   <ul>
-    <li *ngFor="let user of users">
-      {{ user?.name?.first }} @{{ user?.dob?.date }}
-    </li>
+    <li *ngFor="let user of users">{{ user?.name }} - {{ user?.phone }}</li>
   </ul>
 </div>
