@@ -54,13 +54,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
-import { AuthInterceptor } from './interceptor';
 import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { AuthInterceptor } from 'src/_helpers/interceptor';
 
 @NgModule({
   declarations: [
