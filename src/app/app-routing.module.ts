@@ -7,6 +7,8 @@ import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AboutViewComponent } from './about/about-view/about-view.component';
+import { AboutEditComponent } from './about/about-edit/about-edit.component';
+import { CanLeaveEditGuard } from './_helpers/can-leave.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +20,11 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       { path: 'view/:id', component: AboutViewComponent },
-      { path: 'edit/:id', component: AboutViewComponent },
+      {
+        path: 'edit',
+        component: AboutEditComponent,
+        canDeactivate: [CanLeaveEditGuard],
+      },
     ],
   },
   { path: 'secret', component: SecretComponent, canActivate: [AuthGuard] },

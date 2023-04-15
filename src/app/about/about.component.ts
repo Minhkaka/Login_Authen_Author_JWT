@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.dataService.getUsers('users').subscribe((data) => {
       if (Array.isArray(data)) {

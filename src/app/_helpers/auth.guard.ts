@@ -5,14 +5,18 @@ import {
   RouterStateSnapshot,
   UrlTree,
   CanActivateChild,
+  CanDeactivate,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AboutEditComponent } from '../about/about-edit/about-edit.component';
 import { AuthService } from '../_services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard
+  implements CanActivate, CanActivateChild, CanDeactivate<AboutEditComponent>
+{
   constructor(private authService: AuthService) {}
 
   canActivate(
@@ -49,5 +53,18 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       return false;
     }
     return true;
+  }
+
+  canDeactivate(
+    component: AboutEditComponent,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return false;
   }
 }
