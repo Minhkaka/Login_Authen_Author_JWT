@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckDeactivate } from 'src/app/_helpers/can-leave.guard';
 import {
-  ActivatedRoute,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-about-edit',
   templateUrl: './about-edit.component.html',
-  styleUrls: ['./about-edit.component.css'],
 })
 export class AboutEditComponent implements OnInit, CheckDeactivate {
   constructor() {}
@@ -27,7 +26,7 @@ export class AboutEditComponent implements OnInit, CheckDeactivate {
     | boolean
     | UrlTree {
     const confirmResult = confirm(
-      'Are you sure you want to leave this page ? '
+      `Are you sure you want to leave ${currentRoute.routeConfig.path} page ? `
     );
     if (confirmResult === true) {
       return true;

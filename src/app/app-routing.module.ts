@@ -8,7 +8,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { AboutViewComponent } from './about/about-view/about-view.component';
 import { AboutEditComponent } from './about/about-edit/about-edit.component';
-import { CanLeaveEditGuard } from './_helpers/can-leave.guard';
+import { CanLeaveGuard } from './_helpers/can-leave.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,11 +19,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
-      { path: 'view/:id', component: AboutViewComponent },
+      {
+        path: 'view',
+        component: AboutViewComponent,
+        canDeactivate: [CanLeaveGuard],
+      },
       {
         path: 'edit',
         component: AboutEditComponent,
-        canDeactivate: [CanLeaveEditGuard],
+        canDeactivate: [CanLeaveGuard], // mỗi khi người dùng navigate ra khỏi màn hình edit này, Angular Router sẽ chạy CanLeaveGuard.canDeactivate
       },
     ],
   },

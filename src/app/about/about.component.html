@@ -4,7 +4,12 @@
     <li *ngFor="let user of users">
       {{ user?.name }} - {{ user?.phone }}
       <div class="example-button-row">
-        <button mat-stroked-button [routerLink]="['/about/view', user.id]">
+        <button
+          mat-stroked-button
+          [routerLink]="['/about/view']"
+          [queryParams]="{ id: user.id }"
+          fragment="minhnc12"
+        >
           View
         </button>
         <button

@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CanLeaveEditGuard implements CanDeactivate<CheckDeactivate> {
+
+// CanDeactivate check nếu redirect sang một trang khác, thì sẽ phải hỏi người dùng xem có thật sự muốn rời khỏi trang hay không
+export class CanLeaveGuard implements CanDeactivate<CheckDeactivate> {
   canDeactivate(
     component: CheckDeactivate,
     currentRoute: ActivatedRouteSnapshot,
