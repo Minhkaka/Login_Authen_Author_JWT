@@ -20,12 +20,12 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
-        path: 'view',
+        path: 'view/:id',
         component: AboutViewComponent,
         canDeactivate: [CanLeaveGuard],
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         component: AboutEditComponent,
         canDeactivate: [CanLeaveGuard], // mỗi khi người dùng navigate ra khỏi màn hình edit này, Angular Router sẽ chạy CanLeaveGuard.canDeactivate
       },

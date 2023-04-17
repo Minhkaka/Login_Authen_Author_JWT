@@ -14,6 +14,7 @@ import { AuthService } from '../_services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
+// canActivate check access permisson navigate to URL
 export class AuthGuard
   implements CanActivate, CanActivateChild, CanDeactivate<AboutEditComponent>
 {

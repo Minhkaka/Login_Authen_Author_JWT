@@ -6,8 +6,7 @@
       <div class="example-button-row">
         <button
           mat-stroked-button
-          [routerLink]="['/about/view']"
-          [queryParams]="{ id: user.id }"
+          [routerLink]="['/about/view', user.id]"
           fragment="minhnc12"
         >
           View
@@ -15,8 +14,7 @@
         <button
           mat-stroked-button
           color="primary"
-          [routerLink]="['/about/edit']"
-          [queryParams]="{ id: user.id }"
+          [routerLink]="['/about/edit', user.id]"
           fragment="minhnc12"
         >
           Edit
