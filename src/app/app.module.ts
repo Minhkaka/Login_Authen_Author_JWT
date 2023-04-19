@@ -19,7 +19,7 @@ import { ShareModule } from './share/share.module';
     DialogLoginComponent,
     HomeComponent,
     SecretComponent,
-    ProjectsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

@@ -146,6 +146,7 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     PortalModule,
     ScrollingModule,
     FileUploadModule,
+    SpinnerComponent,
   ],
   providers: [
     {
