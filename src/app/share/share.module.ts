@@ -47,8 +47,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadModule } from 'ng2-file-upload';
+import { SpinnerComponent } from './ui/spinner/spinner.component';
 
 @NgModule({
+  declarations: [SpinnerComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,

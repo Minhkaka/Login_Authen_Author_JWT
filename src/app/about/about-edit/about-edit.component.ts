@@ -30,8 +30,9 @@ export class AboutEditComponent implements OnInit, CheckDeactivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log(currentRoute, currentState);
     const confirmResult = confirm(
-      `Are you sure you want to leave ${currentRoute.routeConfig.path} page ? `
+      `Are you sure you want to leave ${currentState.url} page ? `
     );
     if (confirmResult === true) {
       return true;

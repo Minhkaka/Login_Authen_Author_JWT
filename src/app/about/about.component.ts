@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { DataService } from '../_services/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
 })
 export class AboutComponent implements OnInit {
-  users = [];
+  id$: Observable<string>;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
-    this.dataService.getUsers('users').subscribe((data) => {
-      if (Array.isArray(data)) {
-        this.users = data.filter((ele, i) => i % 2 === 0);
-      }
-    });
+    // this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.id$ = this._route.paramMap.pipe(map((params) => params.get('id')));
   }
 }

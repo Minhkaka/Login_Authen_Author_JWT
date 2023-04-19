@@ -5,18 +5,22 @@ import { AuthGuard } from '../_helpers/auth.guard';
 import { AboutViewComponent } from './about-view/about-view.component';
 import { CanLeaveGuard } from '../_helpers/can-leave.guard';
 import { AboutEditComponent } from './about-edit/about-edit.component';
+import { AboutListComponent } from './about-list/about-list.component';
 
 const routes: Routes = [
   {
-    path: 'about',
+    path: '',
     component: AboutComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
       {
+        path: '',
+        component: AboutListComponent,
+      },
+      {
         path: 'view/:id',
         component: AboutViewComponent,
-        canDeactivate: [CanLeaveGuard],
       },
       {
         path: 'edit/:id',

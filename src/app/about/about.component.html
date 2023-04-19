@@ -1,27 +1,2 @@
-<div>
-  <b>about works!</b>
-  <ul>
-    <li *ngFor="let user of users">
-      {{ user?.name }} - {{ user?.phone }}
-      <div class="example-button-row">
-        <button
-          mat-stroked-button
-          [routerLink]="['/about/view', user.id]"
-          fragment="minhnc12"
-        >
-          View
-        </button>
-        <button
-          mat-stroked-button
-          color="primary"
-          [routerLink]="['/about/edit', user.id]"
-          fragment="minhnc12"
-        >
-          Edit
-        </button>
-      </div>
-    </li>
-  </ul>
-</div>
-
+<b>about works!</b>
 <router-outlet></router-outlet>

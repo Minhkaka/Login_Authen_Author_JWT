@@ -10,12 +10,14 @@ import { catchError, finalize, map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../_services/auth.service';
 import { LoadingService } from '../_services/loading.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   private totalRequests = 0;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private loadingService: LoadingService
   ) {}
@@ -58,6 +60,11 @@ export class AuthInterceptor implements HttpInterceptor {
           errorMsg = `Error: ${error.error.message}`;
         } else {
           console.log('This is server side error');
+          if (error.status === 401) {
+            // redirect user to the logout page
+            this.authService.removeToken();
+            this.router.navigate(['/']);
+          }
           errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
         }
         // show popup error message

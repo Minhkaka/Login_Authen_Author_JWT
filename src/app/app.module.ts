@@ -10,9 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { SecretComponent } from './secret/secret.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AuthInterceptor } from './_helpers/interceptor';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { AboutModule } from './about/about.module';
-import { ShareModule } from './share.module';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { ShareModule } from './share.module';
     HomeComponent,
     SecretComponent,
     ProjectsComponent,
-    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

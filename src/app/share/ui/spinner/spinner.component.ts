@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LoadingService } from '../_services/loading.service';
+import { LoadingService } from '../../service/loading.service';
 
 @Component({
   selector: 'app-spinner',
