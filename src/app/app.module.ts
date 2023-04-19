@@ -11,7 +11,6 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AuthInterceptor } from './_helpers/interceptor';
 import { AboutModule } from './about/about.module';
 import { ShareModule } from './share/share.module';
-import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { DialogLoginComponent } from './dialog-login/dialog-login.component';
     HomeComponent,
     SecretComponent,
     ProjectsComponent,
-    DialogLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +32,6 @@ import { DialogLoginComponent } from './dialog-login/dialog-login.component';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  entryComponents: [DialogLoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
