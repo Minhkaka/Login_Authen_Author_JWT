@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SecretComponent } from './secret/secret.component';
@@ -12,14 +11,14 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AuthInterceptor } from './_helpers/interceptor';
 import { AboutModule } from './about/about.module';
 import { ShareModule } from './share/share.module';
+import { DialogLoginComponent } from './share/ui/dialog-login/dialog-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogLoginComponent,
     HomeComponent,
     SecretComponent,
-    ProjectsComponent
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,

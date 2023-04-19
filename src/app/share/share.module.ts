@@ -48,9 +48,11 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadModule } from 'ng2-file-upload';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
+import { CommonModule } from '@angular/common';
+import { DialogLoginComponent } from './ui/dialog-login/dialog-login.component';
 
 @NgModule({
-  declarations: [SpinnerComponent],
+  declarations: [SpinnerComponent, DialogLoginComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -98,6 +100,7 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     PortalModule,
     ScrollingModule,
     FileUploadModule,
+    CommonModule,
   ],
   exports: [
     MatDialogModule,
@@ -147,6 +150,7 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     ScrollingModule,
     FileUploadModule,
     SpinnerComponent,
+    DialogLoginComponent,
   ],
   providers: [
     {

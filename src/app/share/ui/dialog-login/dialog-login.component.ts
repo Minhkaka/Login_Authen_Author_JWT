@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoginAuthService } from '../_services/login-auth.service';
+import { LoginAuthService } from 'src/app/_services/login-auth.service';
 
 export interface DialogData {
   username: string;
