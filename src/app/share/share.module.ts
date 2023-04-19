@@ -49,10 +49,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FileUploadModule } from 'ng2-file-upload';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
-import { DialogLoginComponent } from './ui/dialog-login/dialog-login.component';
 
 @NgModule({
-  declarations: [SpinnerComponent, DialogLoginComponent],
+  declarations: [SpinnerComponent],
   imports: [
     MatDialogModule,
     MatFormFieldModule,
@@ -150,7 +149,6 @@ import { DialogLoginComponent } from './ui/dialog-login/dialog-login.component';
     ScrollingModule,
     FileUploadModule,
     SpinnerComponent,
-    DialogLoginComponent,
   ],
   providers: [
     {
