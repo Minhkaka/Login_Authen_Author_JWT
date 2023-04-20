@@ -1,14 +1,32 @@
-<div mat-dialog-content>
-  <p>Login</p>
-  <mat-form-field>
-    <mat-label>User Name</mat-label>
-    <input matInput [(ngModel)]="data.username" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="data.password" />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="submitLogin()">Submit</button>
-</div>
+<form
+  class="sign-in-form"
+  autocomplete="off"
+  [formGroup]="signInForm"
+  (ngSubmit)="submitLogin()"
+>
+  <h2>Sign in</h2>
+  <div class="row-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Username" formControlName="username" />
+    </mat-form-field>
+  </div>
+  <div class="row-control">
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        formControlName="password"
+      />
+    </mat-form-field>
+  </div>
+  <div class="row-control">
+    <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+  </div>
+  <div class="row-control row-actions">
+    <button mat-raised-button color="primary" type="submit">Sign in</button>
+  </div>
+</form>
+<pre>{{ signInForm.value | json }}</pre>
