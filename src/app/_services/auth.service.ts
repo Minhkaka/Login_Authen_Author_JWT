@@ -74,8 +74,8 @@ export class AuthService {
   }
 
   public logout() {
-    this.removeToken();
     this.router.navigate(['/']);
+    this.removeToken();
   }
 
   public login(backUrl): void {

@@ -9,7 +9,7 @@ import { AboutListComponent } from './about-list/about-list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'about',
     component: AboutComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
