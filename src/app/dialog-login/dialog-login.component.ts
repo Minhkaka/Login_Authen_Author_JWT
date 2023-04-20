@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoginAuthService } from '../_services/login-auth.service';
+import { NoWhitespaceValidator } from '../_validators/no-whitespace.validator';
 
 export interface DialogData {
   username: string;
@@ -25,8 +26,23 @@ export class DialogLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      username: '',
-      password: '',
+      username: [
+        '',
+        Validators.compose([
+          //Validators.required,
+          NoWhitespaceValidator(),
+          Validators.minLength(6),
+          //Validators.pattern(/^[a-z]{6,32}$/i)
+        ]),
+      ],
+      password: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(/^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{6,32}$/),
+        ]),
+      ],
       rememberMe: false,
     });
   }
