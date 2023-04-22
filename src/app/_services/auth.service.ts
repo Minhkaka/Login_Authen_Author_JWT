@@ -60,6 +60,7 @@ export class AuthService {
   }
 
   public canAccess(url) {
+    // roles: admin, author, editor, user
     if (this.roles.includes('admin')) {
       return true;
     }
